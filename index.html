@@ -25,35 +25,32 @@
         <p>bocilkuuuuu bokem ayaaamkuuu nunuukuuu</p>
       </div>
 
-<audio id="music" preload="auto" loop playsinline webkit-playsinline>
-        <source src="./lagu.mp3" type="audio/mpeg">
-      </audio>
+<audio id="music" loop playsinline webkit-playsinline>
+  <source src="./lagu.mp3" type="audio/mpeg">
+</audio>
 
-    </div>
-  </main>
+<script>
+  const cover = document.getElementById("cover");
+  const music = document.getElementById("music");
+  music.volume = 0.9;
 
-  <script>
-    const cover = document.getElementById("cover");
-    const music = document.getElementById("music");
-    music.volume = 0.85;
+  function openLetter() {
+    cover.classList.add("open");
 
-    function openLetter(){
-      cover.classList.add("open");
-
-      const play = () => music.play().catch(() => {});
-      play();
-
-      cover.addEventListener("animationend", () => {
-        cover.style.display = "none";
-      }, { once: true });
-    }
-
-    cover.addEventListener("click", openLetter);
-    cover.addEventListener("touchstart", openLetter, { passive: true });
-    cover.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") openLetter();
+    music.play().then(() => {
+      console.log("playing");
+    }).catch(err => {
+      console.log("blocked", err);
     });
-  </script>
+
+    cover.addEventListener("animationend", () => {
+      cover.style.display = "none";
+    }, { once: true });
+  }
+
+  cover.addEventListener("click", openLetter);
+</script>
+
 
 </body>
 </html>
