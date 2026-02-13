@@ -25,8 +25,8 @@
         <p>bocilkuuuuu bokem ayaaamkuuu nunuukuuu</p>
       </div>
 
-      <audio id="music" loop>
-        <source src="lagu.mp3" type="audio/mpeg">
+<audio id="music" preload="auto" loop playsinline webkit-playsinline>
+        <source src="./lagu.mp3" type="audio/mpeg">
       </audio>
 
     </div>
@@ -35,12 +35,13 @@
   <script>
     const cover = document.getElementById("cover");
     const music = document.getElementById("music");
+    music.volume = 0.85;
 
     function openLetter(){
-
       cover.classList.add("open");
 
-      try { music.volume = 0.85; music.play(); } catch(e) {}
+      const play = () => music.play().catch(() => {});
+      play();
 
       cover.addEventListener("animationend", () => {
         cover.style.display = "none";
