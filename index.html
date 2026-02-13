@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <div class="card">
+
+      <div class="cover" id="cover" role="button" tabindex="0" aria-label="Open surat valentine">
+        <div class="coverHint">
+          <div class="hintTitle">Open surat 💌</div>
+          <div class="hintSub">Tap / klik untuk buka</div>
+        </div>
+      </div>
+
+      <img src="foto.jpg" class="photo" alt="foto">
+
+      <div class="text">
+        <h1>happy valentine</h1>
+        <p>bocilkuuuuu bokem ayaaamkuuu nunuukuuu</p>
+      </div>
+
+      <audio id="music" loop>
+        <source src="lagu.mp3" type="audio/mpeg">
+      </audio>
+
+    </div>
+  </main>
+
+  <script>
+    const cover = document.getElementById("cover");
+    const music = document.getElementById("music");
+
+    function openLetter(){
+
+      cover.classList.add("open");
+
+      try { music.volume = 0.85; music.play(); } catch(e) {}
+
+      cover.addEventListener("animationend", () => {
+        cover.style.display = "none";
+      }, { once: true });
+    }
+
+    cover.addEventListener("click", openLetter);
+    cover.addEventListener("touchstart", openLetter, { passive: true });
+    cover.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") openLetter();
+    });
+  </script>
+
+</body>
+</html>
